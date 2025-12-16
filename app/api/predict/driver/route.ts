@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import { predictDriver } from "@/lib/ml-predictor"
 
 export async function GET(request: Request) {
@@ -7,17 +9,31 @@ export async function GET(request: Request) {
     const year = Number.parseInt(searchParams.get("year") || "2025")
 
     if (!driverId || driverId < 1) {
-      return Response.json({ success: false, error: "Invalid driver ID" }, { status: 400 })
+      return Response.json(
+        { success: false, error: "Invalid driver ID" },
+        { status: 400 }
+      )
     }
 
     const prediction = await predictDriver(driverId, year)
 
-    return Response.json({
-      success: true,
-      data: prediction,
-    })
+    return new Response(
+      JSON.stringify({
+        success: true,
+        data: prediction,
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store",
+        },
+      }
+    )
   } catch (error) {
-    console.error("[Predict Driver API] Error:", error)
-    return Response.json({ success: false, error: "Failed to predict driver" }, { status: 500 })
+    console.error("[Predict Driver API Error]:", error)
+    return Response.json(
+      { success: false, error: "Failed to predict driver" },
+      { status: 500 }
+    )
   }
 }
