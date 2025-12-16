@@ -1,0 +1,14 @@
+# CSV files go here
+# Download from Kaggle F1 Complete Dataset:
+# https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020
+
+# Required files:
+# - drivers.csv
+# - constructors.csv
+# - races.csv
+# - results.csv
+# - circuits.csv
+# - seasons.csv
+# - qualifying.csv
+# - lap_times.csv
+# - pit_stops.csv

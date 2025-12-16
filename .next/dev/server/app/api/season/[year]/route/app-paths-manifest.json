@@ -1,0 +1,3 @@
+{
+  "/api/season/[year]/route": "app/api/season/[year]/route.js"
+}

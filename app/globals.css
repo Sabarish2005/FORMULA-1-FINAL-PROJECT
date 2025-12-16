@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Orbitron', system-ui, sans-serif;
+  
+  /* F1 Color Palette */
+  --color-ferrari-red: #ff0a0a;
+  --color-papaya: #ff8700;
+  --color-carbon: #0d0d0d;
+  --color-dark-grey: #1a1a1a;
+  --color-mid-grey: #2d2d2d;
+  --color-light-grey: #404040;
+  
+  /* Semantic tokens */
+  --color-primary: var(--color-ferrari-red);
+  --color-accent: var(--color-papaya);
+  --color-background: var(--color-carbon);
+  --color-surface: var(--color-dark-grey);
+  --color-surface-light: var(--color-mid-grey);
+  --color-border: var(--color-light-grey);
+  --color-text: #ffffff;
+  --color-text-muted: #a0a0a0;
+  
+  --radius: 0.5rem;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply bg-background text-text;
+}
+
+/* Neon glow effects */
+@keyframes glow-red {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 10, 10, 0.5);
+    box-shadow: 0 0 20px rgba(255, 10, 10, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 10, 10, 0.8);
+    box-shadow: 0 0 30px rgba(255, 10, 10, 0.6);
+  }
+}
+
+@keyframes glow-papaya {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 135, 0, 0.5);
+    box-shadow: 0 0 20px rgba(255, 135, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 135, 0, 0.8);
+    box-shadow: 0 0 30px rgba(255, 135, 0, 0.6);
+  }
+}
+
+/* Glassmorphism */
+.glass {
+  @apply backdrop-blur-md bg-white/10 border border-white/20;
+}
+
+.glass-dark {
+  @apply backdrop-blur-md bg-black/40 border border-white/10;
+}
+
+/* Utility classes */
+.glow-red {
+  animation: glow-red 2s ease-in-out infinite;
+}
+
+.glow-papaya {
+  animation: glow-papaya 2s ease-in-out infinite;
+}
+
+.neon-red {
+  @apply text-ferrari-red drop-shadow-[0_0_8px_rgba(255,10,10,0.6)];
+}
+
+.neon-papaya {
+  @apply text-papaya drop-shadow-[0_0_8px_rgba(255,135,0,0.6)];
+}
+
+/* Carbon texture background */
+.carbon-texture {
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
+}
+
+/* Smooth transitions */
+a, button, input, select, textarea {
+  @apply transition-colors duration-300;
+}
